@@ -76,8 +76,12 @@ $(document).ready(function () {
     //use jquery to make the images function as buttons
     setUpBoard();
     $("#crystals").on("click", "img", function(){
-        console.log(this)
-        userScore = userScore + crystals[value];
+        console.log(this);
+        var valueOfSelectedCrystal = $(this).attr("value");
+        console.log(valueOfSelectedCrystal);
+        //parseInt function to convert valueOfSelectedCrytal from string to integer
+        userScore = userScore + valueOfSelectedCrystal;
+        console.log(userScore);
     })
 
     function reset() {

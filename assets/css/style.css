@@ -1,0 +1,9 @@
+body {
+    background-image: 
+        url(../images/debut_light.png);
+}
+
+.jumbotron {
+    background-color: slategray;
+    color: white;
+}
