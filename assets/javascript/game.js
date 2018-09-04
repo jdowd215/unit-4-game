@@ -38,6 +38,23 @@ var crystals = [
         name: "sapphire",
         value: 0
     }]
+
+        //if/else statements
+        //if userScore equals numberToMatch, wins++
+        if (userScore === numberToMatch) {
+            wins++;
+            console.log(wins);
+            $("#wins").text(wins);
+            //display "you win"
+        }
+
+        //if userScore is higher than numberToMatch, losses++
+        if (userScore > numberToMatch) {
+            losses++;
+            console.log(losses);
+            $("#losses").text(losses);
+            //display "you lose"
+        }
 //<-----FUNCTIONS----->
 // function responsible for handling dynamic events on page load
 // restarts the game when the user wins or loses
@@ -80,8 +97,12 @@ $(document).ready(function () {
         var valueOfSelectedCrystal = $(this).attr("value");
         console.log(valueOfSelectedCrystal);
         //parseInt function to convert valueOfSelectedCrytal from string to integer
+        valueOfSelectedCrystal = parseInt(valueOfSelectedCrystal);
         userScore = userScore + valueOfSelectedCrystal;
         console.log(userScore);
+        //print userScore to screen
+        $("#score").text(userScore);
+
     })
 
     function reset() {
@@ -90,39 +111,23 @@ $(document).ready(function () {
         userScore = 0;
         var numberToMatch = Math.round((Math.random() * 120) + 19);
         console.log(numberToMatch);
-        // Math.floor and Math.random function to randomly choose crystal value
-        // var citrineValue = Math.round((Math.random() * 12) + 1);
-        // console.log(citrineValue);
-        // var emeraldValue = Math.round((Math.random() * 12) + 1);
-        // console.log(emeraldValue);
-        // var garnetValue = Math.round((Math.random() * 12) + 1);
-        // console.log(garnetValue);
-        // var sapphireValue = Math.round((Math.random() * 12) + 1);
-        // console.log(sapphireValue);
-
-        //print numberToMatch to screen using randomNumber id
+        //print numberToMatch to screen
         $("#random").text(numberToMatch);
-        //print userScore to screen
-        $("#score").text(userScore);
 
-        //if/else statements
-        //if userScore equals numberToMatch, wins++
-        if (userScore === numberToMatch) {
+        function winner() {
+            alert("You Won!!");
             wins++;
             $("#wins").text(wins);
-            //display "you win"
+            reset();
         }
-
-        //if userScore is higher than numberToMatch, losses++
-        if (userScore > numberToMatch) {
+        
+        function loser() {
+            alert("You Lose!!");
             losses++;
             $("#losses").text(losses);
-            //display "you lose"
+            reset();
         }
-
-        //<-----EVENT LISTENERS----->
-        //clicking on crystal button adds the value of the crystal button to userScore (on-click event)
-        //$("#crystal").______(userScore);
+    
         //when user wins or loses, reset numberToMatch and crystal variables and userScore
         //push those reset variables to HTML
 
