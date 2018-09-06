@@ -77,6 +77,7 @@ $(document).ready(function () {
         }
     }
 
+    //function for when userScore matches numberToMatch
     function winner () {
         wins++;
         $("#wins").text(wins);
@@ -84,6 +85,7 @@ $(document).ready(function () {
         reset();
     }
 
+    //function for when userScore is greater than numberToMatch
     function loser () {
         losses++;
         $("#losses").text(losses);
