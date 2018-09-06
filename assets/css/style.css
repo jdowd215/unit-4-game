@@ -1,9 +1,15 @@
 body {
     background-image: 
-        url(../images/debut_light.png);
+        url(../images/process-bg.jpg);
 }
 
 .jumbotron {
-    background-color: slategray;
-    color: white;
+    background-color: #999999; 
+    color: #333333;
+}
+
+#gameRules {
+    background-color: #999999;
+    color: #333333;
+    border-radius: 5px
 }

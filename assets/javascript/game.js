@@ -39,22 +39,7 @@ var crystals = [
         value: 0
     }]
 
-        //if/else statements
-        //if userScore equals numberToMatch, wins++
-        if (userScore === numberToMatch) {
-            wins++;
-            console.log(wins);
-            $("#wins").text(wins);
-            //display "you win"
-        }
 
-        //if userScore is higher than numberToMatch, losses++
-        if (userScore > numberToMatch) {
-            losses++;
-            console.log(losses);
-            $("#losses").text(losses);
-            //display "you lose"
-        }
 //<-----FUNCTIONS----->
 // function responsible for handling dynamic events on page load
 // restarts the game when the user wins or loses
@@ -63,13 +48,21 @@ var crystals = [
 // Math.floor and math.random function to randomly choose numberToMatch
 $(document).ready(function () {
 
+    function reset() {
+        wins = 0;
+        losses = 0;
+        userScore = 0;
+        var numberToMatch = Math.round((Math.random() * 120) + 19);
+        console.log(numberToMatch);
+        //print numberToMatch to screen
+        $("#random").text(numberToMatch);
+        }
+
     //function to give each crystal a random value between 1-12 each time the page is loaded
     function makeCrystalScores() {
         for (var i = 0; i < 4; i++) {
             var crystal = Math.round((Math.random() * 12) + 1);
             crystals[i].value = crystal;
-            // userScore = userScore + crystal;
-            // console.log(userScore);
         }
     }
 
@@ -82,6 +75,20 @@ $(document).ready(function () {
             crystalImage.addClass("crystal")
             $("#crystals").append(crystalImage)
         }
+    }
+
+    function winner () {
+        wins++;
+        $("#wins").text(wins);
+        $("#message").text("You Win!!!");
+        reset();
+    }
+
+    function loser () {
+        losses++;
+        $("#losses").text(losses);
+        $("#message").text("You Lose!");
+        reset();
     }
 
     //call the makeCrystalScores and makeCrystalButtons functions
@@ -103,35 +110,22 @@ $(document).ready(function () {
         //print userScore to screen
         $("#score").text(userScore);
 
-    })
-
-    function reset() {
-        wins = 0;
-        losses = 0;
-        userScore = 0;
-        var numberToMatch = Math.round((Math.random() * 120) + 19);
-        console.log(numberToMatch);
-        //print numberToMatch to screen
-        $("#random").text(numberToMatch);
-
-        function winner() {
-            alert("You Won!!");
-            wins++;
-            $("#wins").text(wins);
-            reset();
-        }
-        
-        function loser() {
-            alert("You Lose!!");
-            losses++;
-            $("#losses").text(losses);
-            reset();
-        }
+            //if/else statements
+            //if userScore equals numberToMatch, wins++
+            if (userScore === numberToMatch) {
+                winner ();
+                reset();
+            }
     
+            //if userScore is higher than numberToMatch, losses++
+            if (userScore > numberToMatch) {
+                losses++;
+                loser ();
+                reset();
+            }
+        });
+
         //when user wins or loses, reset numberToMatch and crystal variables and userScore
         //push those reset variables to HTML
-
-
-    }
     reset();
-})    
+});
