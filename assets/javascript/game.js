@@ -52,7 +52,7 @@ $(document).ready(function () {
         wins = 0;
         losses = 0;
         userScore = 0;
-        var numberToMatch = Math.round((Math.random() * 120) + 19);
+        numberToMatch = Math.round((Math.random() * 120) + 19);
         console.log(numberToMatch);
         //print numberToMatch to screen
         $("#random").text(numberToMatch);
@@ -109,6 +109,7 @@ $(document).ready(function () {
         valueOfSelectedCrystal = parseInt(valueOfSelectedCrystal);
         userScore = userScore + valueOfSelectedCrystal;
         console.log(userScore);
+        console.log(numberToMatch);
         //print userScore to screen
         $("#score").text(userScore);
 
@@ -118,13 +119,14 @@ $(document).ready(function () {
                 winner ();
                 reset();
             }
-    
+            
             //if userScore is higher than numberToMatch, losses++
             if (userScore > numberToMatch) {
-                losses++;
+                console.log("wins");
                 loser ();
                 reset();
             }
+
         });
 
         //when user wins or loses, reset numberToMatch and crystal variables and userScore
