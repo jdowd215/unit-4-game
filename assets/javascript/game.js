@@ -49,8 +49,8 @@ var crystals = [
 $(document).ready(function () {
 
     function reset() {
-        wins = 0;
-        losses = 0;
+        wins;
+        losses;
         userScore = 0;
         numberToMatch = Math.round((Math.random() * 120) + 19);
         console.log(numberToMatch);
@@ -122,7 +122,6 @@ $(document).ready(function () {
             
             //if userScore is higher than numberToMatch, losses++
             if (userScore > numberToMatch) {
-                console.log("wins");
                 loser ();
                 reset();
             }
